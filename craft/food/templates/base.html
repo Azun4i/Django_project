@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <title>{% block title %} Craft launch room {% endblock %}</title>
+    <title>{% block head_title %}{% endblock %}</title>
+    {% block extra_head %}
+    {% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+{% include 'inc/_header.html' %}
+
+
+
+{% block content %}{% endblock content %}
+{% block extra_body %}
+{% endblock %}
+
+{% include 'inc/_footer.html' %}
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'js/jquery.timepicker.min.js' %}"></script>
+<script src="{% static 'js/scrollax.min.js' %}"></script>
+<script src="https://yandex.ru/maps/?um=constructor%3A2a80ff3caad84411809b2e5716f4aa330833e686ea15da2282fbb61efff58b9e&source=constructorLink"></script>
+<!--  <script src="{% static 'js/google-map.js' %}"></script>-->
+<script src="{% static 'js/main.js' %}"></script>
+
+
+</body>
+
+<!--<div class="mt-5 pt-5">-->
+<!--    &lt;!&ndash;    {% if messages %}&ndash;&gt;-->
+<!--    &lt;!&ndash;        {% for message in messages %}&ndash;&gt;-->
+<!--    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">-->
+<!--        &lt;!&ndash;            {{ message }}&ndash;&gt;-->
+<!--        <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--            <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;        {% endfor %}&ndash;&gt;-->
+<!--    &lt;!&ndash;    {% endif %}&ndash;&gt;-->
+<!--</div>-->

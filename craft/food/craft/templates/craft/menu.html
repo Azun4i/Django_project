@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ title }} :: {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<body>
+<section class="home-slider owl-carousel">
+
+    <div class="slider-item" style="background-image: url({% static 'images/bg_3.jpg' %});"
+         data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row slider-text justify-content-center align-items-center">
+
+                <div class="col-md-7 col-sm-12 text-center ftco-animate">
+                    <h1 class="mb-3 mt-5 bread">Our Menu</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'craft:home' %}">Home</a></span> <span>Menu</span></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-intro">
+    <div class="container-wrap">
+        <div class="wrap d-md-flex align-items-xl-end">
+            <div class="info">
+                <div class="row no-gutters">
+                    <div class="col-md-4 d-flex ftco-animate">
+                        <div class="icon"><span class="icon-phone"></span></div>
+                        <div class="text">
+                            <h3>Телефон!!</h3>
+                            <p>Что написать </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex ftco-animate">
+                        <div class="icon"><span class="icon-my_location"></span></div>
+                        <div class="text">
+                            <h3>Адрес </h3>
+                            <p> Казахстан г.Шимкент и тд</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex ftco-animate">
+                        <div class="icon"><span class="icon-clock-o"></span></div>
+                        <div class="text">
+                            <h3>Работаем с Понедельника по Пятницу</h3>
+                            <p>11:00 дня по 24:00 ночи.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="book p-4">
+                <h3>Форма резерва</h3>
+                     <form action="{% url 'craft:send_reserve_to_telegram' %}" class="appointment-form" method="post">
+                        {% csrf_token %}
+                        <div class="d-md-flex">
+                            <div class="form-group" >
+                                <input type="text" class="form-control" placeholder="Имя" name="username" required>
+                            </div>
+                        </div>
+                        <div class="d-md-flex">
+                            <div class="form-group">
+                                <div class="input-wrap">
+                                    <div class="icon"><span class="ion-md-calendar"></span></div>
+                                    <input type="text" class="form-control appointment_date" placeholder="Дата" name="date" required>
+                                </div>
+                            </div>
+                            <div class="form-group ml-md-4">
+                                <div class="input-wrap">
+                                    <div class="icon"><span class="ion-ios-clock"></span></div>
+
+                                    <input type="text" class="form-control appointment_time" placeholder="Время" name="time">
+                                </div>
+                            </div>
+                            <div class="form-group ml-md-4">
+                                <input type="text" class="form-control" placeholder="+7 777 777 77 77" name="phone_number" required>
+                            </div>
+                        </div>
+                        <div class="d-md-flex">
+                            <div class="form-group">
+                                <textarea name="massages" id="" cols="30" rows="2" class="form-control"
+                                          placeholder="Примечание" required></textarea>
+                            </div>
+                            <div class="form-group ml-md-4">
+                                <input type="submit" value="Appointment" class="btn btn-white py-3 px-4">
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--<section class="ftco-section">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            {% for item in categories %}-->
+<!--            <div class="col-md-6 mb-5 pb-3">-->
+<!--                <h3 class="mb-5 heading-pricing ftco-animate">{{ item.title }}</h3>-->
+<!--                {% for i in object_list %}-->
+<!--                    {% if i.category == item %}-->
+<!--                        <div class="pricing-entry d-flex ftco-animate">-->
+<!--                            {% if i.photo %}-->
+<!--                                <div class="img" style="background-image: url({{ i.photo.url }});"></div>-->
+<!--                            {% else %}-->
+<!--                                <p></p>-->
+<!--                            {% endif %}-->
+<!--                            <div class="desc pl-3">-->
+<!--                                <div class="d-flex text align-items-center">-->
+<!--                                    <h3><span>{{ i.title }}</span></h3>-->
+<!--                                    <span class="price">{{ i.price }}</span>-->
+<!--                                </div>-->
+<!--                                <div class="d-block">-->
+<!--                                    <p>{{ i.composition|truncatewords:5 }}</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    {% endif %}-->
+<!--                {% endfor %}-->
+<!--            </div>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<section class="ftco-menu mb-5 pb-5">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <span class="subheading">Discover</span>
+                <h2 class="mb-4">Our Products</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
+                    the blind texts.</p>
+            </div>
+        </div>
+        <div class="row d-md-flex">
+            <div class="col-lg-12 ftco-animate p-md-5">
+                <div class="row">
+                    {% for item in categories %}
+                    <div class="col-md-12 nav-link-wrap mb-5">
+                        <div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist"
+                             aria-orientation="vertical">
+                            <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill"
+                               role="tab" aria-controls="v-pills-1" aria-selected="true">{{ item.title }}</a>
+                        </div>
+                    </div>
+                    <div class="col-md-12 d-flex align-items-center">
+                        <div class="tab-content ftco-animate" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+                                <div class="row">
+                                    {% for product in menus %}
+                                        {% if product.category == item %}
+                                        <div class="col-md-4 text-center">
+                                        <div class="menu-wrap">
+                                            {% if product.photo %}
+                                                <a  href="{{ product.get_absolute_url }}" class="menu-img img mb-4" style="background-image: url({{ product.photo.url }});"></a>
+                                            {% else %}
+                                            <br>
+                                            {% endif %}
+                                            <div class="text">
+                                                <h3><a href="{{ product.get_absolute_url }}" >{{ product.title }}</a></h3>
+                                                <p>{{ product.composition|truncatewords:8 }}</p>
+                                                <p class="price"><span>{{ product.price }} тн.</span></p>
+<!--                                                <form action="#" method="post">-->
+<!--                                                    {% csrf_token %}-->
+<!--                                                    <input type="submit" value="Добавить в корзину">-->
+<!--                                                </form>-->
+                                                <p><a href="{{ product.get_add_to_cart_url }}" class="btn btn-primary btn-outline-primary">Добавить в корзину</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</body>
+{% endblock %}

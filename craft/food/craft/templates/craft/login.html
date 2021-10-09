@@ -1,0 +1,25 @@
+{% extends 'craft/base.html' %}
+{% load slider_posts %}
+<!--{% load crispy_forms_tags %}-->
+
+{% block title %}
+ПегиДудочник :: {{ block.super }}
+{% endblock  %}
+
+
+
+{% block content %}
+<!--    {% get_slider_post %}-->
+    <div class="col-md-12 text-center ">
+    <h3>Авторизация</h3>
+    <form class="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-dark">Login</button>
+        <p>
+            Если вы еще не создали аккаунт тогда <a href="{% url 'craft:register' %}" class="type-text ">зарегистрируйтесь</a>
+        </p>
+
+    </form>
+    </div>
+{% endblock  %}

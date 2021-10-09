@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load slider_posts %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+ПегиДудочник :: {{ block.super }}
+{% endblock  %}
+
+
+
+{% block content %}
+	{% get_slider_post %}
+    <div class="col-md-12 text-center">
+        <h1>Регистрация</h1>
+        <form  method="post">
+            {% csrf_token %}
+            {{form|crispy}}
+            <button type="submit" class="btn btn-dark">Зарегистрироваться</button>
+
+        </form>
+    </div>
+{% endblock %}

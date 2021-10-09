@@ -1,0 +1,32 @@
+{% load cart_template_tag %}
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'craft:home' %}">Craft<small>launch room</small></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active "><a href="{% url 'craft:home' %}"  class="nav-link">Home</a>
+
+                </li>
+                <li class="nav-item"><a href="{% url 'craft:menu' %}" class="nav-link">Menu</a></li>
+                <li class="nav-item"><a href="{% url 'craft:blog' %}" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+
+                {% if request.user.is_authenticated %}
+                <li class="nav-item person "><a href="{% url 'account_logout' %}" class="nav-link font-italic"><span class="oi oi-person"></span> {{ user.username}}</a></li>
+                <li class="nav-item cart"><a href="{% url 'craft:cart' %}" class="nav-link"><span class="icon icon-shopping_cart"></span>
+                    <span class="bag d-flex justify-content-center align-items-center"><small>{{ request.user|cart_item_count }}</small></span></a>
+                </li>
+                {% else %}
+                <li class="nav-item"><a href="#" class="nav-link oi oi-account-login">Вход</a></li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</nav>

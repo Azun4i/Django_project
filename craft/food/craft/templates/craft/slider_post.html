@@ -1,0 +1,19 @@
+<section class="home-slider owl-carousel">
+    {% for post in posts %}
+        {% if post.published_at %}
+        <div class="slider-item" style="background-image: url({{ post.photo.url }});">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+                    <div class="col-md-8 col-sm-12 text-center ftco-animate">
+                        <span class="subheading">Welcome to</span>
+                        <h1 class="mb-4">The Best CRAFT launch room</h1>
+                        <p class="mb-4 mb-md-5">{{ post.title }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+</section>
