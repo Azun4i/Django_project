@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Поиск :: {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<section class="blog-post-area">
+    <div class="container">
+        <div class="border-top" style="border-top: 1px solid #40c4ff;"></div>
+        <div class="row">
+            <div class="blog-post-area-style">
+
+                <h2 class="sidebar-title">Search</h2>
+                <form action="{% url 'search' %}" method="get">
+                    <input type="text" name="s" placeholder="Search...">
+                    <input type="submit" value="Search...">
+                </form>
+                {% for post in posts %}
+                <div class="col-md-3">
+                    <div class="single-post">
+                        {% if post.photo %}
+                        <img src="{{ post.photo.url  }}" alt="{{ post.title }}">
+                        {% else %}
+                        <img src="http://picsum.photos/id/1060/300/201?blir-2" alt="{{ post.title }}">
+                        {% endif %}
+                        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                        <h4><span>Posted By: <span class="author-name">{{ post.author }}</span></span>
+                        </h4>
+                            {{ post.content|safe|truncatewords_html:20 }}
+                        <h4><span>{{ post.created_at|date:"d.m.y" }}</span></h4>
+                    </div>
+                </div>
+                {% empty %}
+                <p>По вашему запросу ничего не найденно.....  </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% include 'inc/_pagination.html' %}
+</section>
+{% endblock %}
